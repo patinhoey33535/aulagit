@@ -1,6 +1,6 @@
 const calculadora ={
-    numero1: 10,
-    numero2: 50,
+    numero1: 30,
+    numero2: 60,
     multiplicar(){
         return this.numero1 * this.numero2;
     },
