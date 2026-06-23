@@ -24,17 +24,17 @@ const biblioteca = {
 };
 
 biblioteca.adicionarLivros(
-    "The Call of Cthulhu",
-    "H. P. Lovecraft",
+    "dom casmurro",
+    "alto da coompadacida",
     1928,
     "terror cosmico"
 );
 
 biblioteca.adicionarLivros(
-    "The Alchemist",
-    "Paulo Coelho",
+    "iracama",
+    "maquiavel",
     1988,
-    "Fantasia"
+    "o medico o monstro"
 );
 
 console.log(biblioteca.livros);
