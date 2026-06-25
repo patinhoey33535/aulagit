@@ -1,40 +1,104 @@
 const biblioteca = {
     livros: [],
 
-    adicionarLivros(nome, autor, ano, genero) {
+    adicionarLivros(nome, autor, ano, genero, estoque = 1 ) {
         const livro = {
-            nome,
-            autor,
-            ano,
-            genero,
-            disponivel: true,
-            alugado: false,
-            vezesAlugado: 0
+            nome:nome,
+            autor:autor,
+            ano:ano,
+            genero:genero,
+            vezesAlugado: 0,
+            estoque:estoque
         };
 
         this.livros.push(livro);
     },
 
-    mostrarLivros(){
-        for(let i=0; i<this.livros.length; i++){
-            const L= this.livros[i];
-            console.log(L.nomet + " - " + L.autor + " - " + L.ano + " - " + L.genero);
+    mostrarLivros() {
+        console.table(this.livros);
+    },
+
+    alugar(nome) {
+        for (let i = 0; i < this.livros.length; i++) {
+            const l = this.livros[i];
+
+            if (l.nome === nome) {
+                if (l.estoque > 0) {
+                    l.estoque--;
+                    l.vezesAlugado++;
+
+                    console.log(`O livro "${nome}" foi alugado com sucesso!`);
+                    return;
+                } else {
+                    console.log(`O livro "${nome}" está sem estoque, por favor escolha outro livro.`);
+                    return;
+                }
+            }
         }
+
+        console.log(`O livro "${nome}" não existe na biblioteca.`);
     }
 };
 
+
 biblioteca.adicionarLivros(
-    "dom casmurro",
-    "alto da coompadacida",
-    1928,
-    "terror cosmico"
+    "Harry Potter e a Pedra Filosofal",
+    "J. K. Rowling",
+    1997,
+    "Fantasia",
+    2
 );
 
 biblioteca.adicionarLivros(
-    "iracama",
-    "maquiavel",
-    1988,
-    "o medico o monstro"
+    "Harry Potter e o Enigma do Príncipe",
+    "J. K. Rowling",
+    2005,
+    "Fantasia"
+    
 );
 
-console.log(biblioteca.livros);
+biblioteca.adicionarLivros(
+    "Vingadores: Guerra Civil",
+    "Marvel",
+    2016,
+    "Ação",
+    3
+);
+
+biblioteca.adicionarLivros(
+    "Alice no País das Maravilhas",
+    "Lewis Carroll",
+    1865,
+    "Fantasia",
+    2
+);
+
+biblioteca.adicionarLivros(
+    "Piratas do Caribe",
+    "Disney",
+    2003,
+    "Aventura",
+    2
+);
+
+biblioteca.adicionarLivros(
+    "Game of Thrones",
+    "George R. R. Martin",
+    1996,
+    "Fantasia",
+    4
+);
+
+biblioteca.adicionarLivros(
+    "As Aventuras de Gulliver",
+    "Jonathan Swift",
+    1726,
+    "Aventura",
+    1
+);
+
+biblioteca.mostrarLivros();
+
+biblioteca.alugar();
+
+biblioteca.mostrarLivros();
